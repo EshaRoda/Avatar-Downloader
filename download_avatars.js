@@ -2,6 +2,7 @@ var request = require('request');
 var fs = require('fs');
 var input = process.argv.slice(2);
 var USR_AGENT = "Avatar Downloader";
+require('dotenv').config();
 
 var GITHUB_USER = "EshaRoda";
 var GITHUB_TOKEN = "b0ce24201fad9fba486f90ad22e678218c420707";
