@@ -11,9 +11,7 @@ if (input.length !== 2) {
   console.log("Please Enter Owner Name and Repo");
   return false;
 }
-
 console.log('Welcome to the GitHub Avatar Downloader!');
-
 
 function getRepoContributors(repoOwner, repoName, cb) {
   var requestURL = "https://" + GITHUB_USER + ":" + GITHUB_TOKEN + "@api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors";
@@ -29,22 +27,20 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 };
 
-
 function downloadImageByURL(url, filePath) {
   request.get(url)
     .on('error', function (err) {
       console.log('Error Found!');
       throw err;
-    })
+    });
     .on('response', function (response) {
       console.log('Response Status Code: ' + response.statusCode + ' ' + filePath );
-    })
+    });
     .pipe( fs.createWriteStream(filePath))
     .on('finish', function() {
     console.log('Download complete: ' + filePath);
   });
 }
-
 
 getRepoContributors(input[0], input[1], function(err, result) {
   if (err)
